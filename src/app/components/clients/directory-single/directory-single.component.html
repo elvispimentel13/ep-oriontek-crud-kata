@@ -1,0 +1,80 @@
+<div class="card text-center">
+    <br>
+    <h4>Add/Edit Directory</h4>
+    <div class="card-body">
+        <form #directorySingleForm="ngForm" (ngSubmit)="onSubmit(directorySingleForm)" novalidate>
+            <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="directoryService.directorySelected.$key">
+            <input type="hidden" name="clientKey" #clientKey="ngModel" [(ngModel)]="directoryService.directorySelected.clientKey">
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="line1" 
+                    #firstName="ngModel" 
+                    [(ngModel)]="directoryService.directorySelected.line1"
+                    placeholder="Address Line 1"
+                >
+            </div>
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="line2" 
+                    #firstName="ngModel" 
+                    [(ngModel)]="directoryService.directorySelected.line2"
+                    placeholder="Address Line 2"
+                >
+            </div>
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="city" 
+                    #firstName="ngModel" 
+                    [(ngModel)]="directoryService.directorySelected.city"
+                    placeholder="City"
+                >
+            </div>
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="state" 
+                    #firstName="ngModel" 
+                    [(ngModel)]="directoryService.directorySelected.state"
+                    placeholder="State"
+                >
+            </div>
+            <div class="form-group">
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    name="zip" 
+                    #firstName="ngModel" 
+                    [(ngModel)]="directoryService.directorySelected.zip"
+                    placeholder="Zip"
+                >
+            </div>
+            <div class="form-group">
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    name="phone" 
+                    #firstName="ngModel" 
+                    [(ngModel)]="directoryService.directorySelected.phone"
+                    placeholder="Phone"
+                >
+            </div>
+            <hr/>
+            <div class="form-group text-center">
+                <button class="btn btn-primary" type="submit">
+                    <div *ngIf="directoryService.directorySelected.$key == null || directoryService.directorySelected.$key == '' as value; else elseBlock">Add</div>
+                    <ng-template #elseBlock>Update</ng-template>
+                </button>
+                <button class="btn btn-secondary" type="reset" (click)="clearForm(directorySingleForm)">
+                    Clear
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

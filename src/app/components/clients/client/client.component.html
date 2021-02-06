@@ -1,0 +1,69 @@
+<div class="card text-center">
+    <br>
+    <h4>Add/Edit Client</h4>
+    <div class="card-body">
+        <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)" novalidate>
+            <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="clientService.clientSelected.$key">
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="firstName" 
+                    #firstName="ngModel" 
+                    [(ngModel)]="clientService.clientSelected.firstName"
+                    placeholder="First Name"
+                >
+            </div>
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="lastname" 
+                    #lastname="ngModel" 
+                    [(ngModel)]="clientService.clientSelected.lastname"
+                    placeholder="Lastname"
+                >
+            </div>
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="id" 
+                    #dob="ngModel" 
+                    [(ngModel)]="clientService.clientSelected.id"
+                    placeholder="Identification"
+                >
+            </div>
+            <div class="form-group">
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    name="age" 
+                    #dob="ngModel" 
+                    [(ngModel)]="clientService.clientSelected.age"
+                    placeholder="Age"
+                >
+            </div>
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="mail" 
+                    #dob="ngModel" 
+                    [(ngModel)]="clientService.clientSelected.mail"
+                    placeholder="Mail address"
+                >
+            </div>
+            <hr/>
+            <div class="form-group text-center">
+                <button class="btn btn-primary" type="submit">
+                    <div *ngIf="clientService.clientSelected.$key == null || clientService.clientSelected.$key == '' as value; else elseBlock">Add</div>
+                    <ng-template #elseBlock>Update</ng-template>
+                </button>
+                <button class="btn btn-secondary" type="reset" (click)="clearForm(clientForm)">
+                    Clear
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
